@@ -43,6 +43,16 @@ validate $? "enable mysql server"
 systemctl start mysqld &>>$LOG_FILE
 validate $? "starting mysql"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
-validate $? "setting up root password"
+mysql -h mysql.kubevprofile.thevenkat.xyz  -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
+
+if [ $? -ne 0 ]
+then 
+    echo "the password is not set for mysql, setting now" | tee -a $LOG_FILE
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+    validate $? "setting up root password"
+else
+    echo -e "root password is set...$Y SKIPPING $N" | tee -a $LOG_FILE
+fi
+
+
 
