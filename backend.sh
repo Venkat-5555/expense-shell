@@ -73,7 +73,7 @@ validate $? "installing mysql"
 
 #load schema
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h mysql.kubevprofile.thevenkat.xyz -uroot -pExpenseApp@1 < /app/schema/backend.sql
 validate $? "schema loading"
 
 #loading demon
