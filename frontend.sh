@@ -54,10 +54,10 @@ validate $? "extarcting frontend application code"
 cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf &>>$LOG_FILE
 validate $? "copy config file to nginix"
 
-systemctl enable nginx -y
+systemctl enable nginx 
 validate $? "enabling nginx"
 
-systemctl restart nginx -y
+systemctl restart nginx 
 validate $? "restarting nginix" 
 
 
